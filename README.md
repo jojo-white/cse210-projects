@@ -9,4 +9,4 @@ This repository contains the starter code for many different projects. They are 
 * `prove` - Starter projects for each of the prove Developer projects.
 * `final` - Starter projects for final project.
 
-// My name is Joseph White. This is my change to the program. This is for W01 Prepare: Learning Activity - Version Control. I am making one more change to mess with the terminal.
+# My name is Joseph White. This is my change to the program. This is for W01 Prepare: Learning Activity - Version Control. Test 2.
