@@ -10,10 +10,7 @@ public class Journal
         }
     }
 
-    public void Seperate()
-    {
-        string seperate = string.Join("~~", _entryList);
-    }
+    
 
     public void SaveToFile(string fileName)
     {
