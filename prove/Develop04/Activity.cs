@@ -10,8 +10,7 @@ public class Activity
     private int _spinnerTimer = 0;
     private string _explanation = "";
 
-    private List<string> _spinner = new List<string>();
-
+    private List<string> _spinner = new List<string>{"|", "/", "-", "\\", "|", "/", "-", "\\"};
     public Activity()
     {}
 
@@ -94,15 +93,6 @@ public class Activity
 
     public void Spinner()
     {
-        _spinner.Add("|");
-        _spinner.Add("/");
-        _spinner.Add("-");
-        _spinner.Add("\\");
-        _spinner.Add("|");
-        _spinner.Add("/");
-        _spinner.Add("-");
-        _spinner.Add("\\");
-
 
         int timer = GetSpinnerTime();
         DateTime startTime = DateTime.Now;
@@ -113,7 +103,7 @@ public class Activity
         {
             string s = _spinner[i];
             Console.Write(s);
-            Thread.Sleep(500);
+            Thread.Sleep(250);
             Console.Write("\b \b");
             i++;
 
