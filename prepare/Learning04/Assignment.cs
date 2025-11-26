@@ -1,7 +1,6 @@
 public class Assignment
 {
-    // protected string _studentName = "";
-    // protected string _topic = "";
+    
     private string _studentName;
     private string _topic;
 
@@ -11,10 +10,10 @@ public class Assignment
         _topic = "No Topic";
     }
 
-    public Assignment(string name, string topic)
+    public Assignment(string studentName, string assignmentTopic)
     {
-        _studentName = name;
-        _topic = topic;
+        _studentName = studentName;
+        _topic = assignmentTopic;
     }
 
     public string GetName()
