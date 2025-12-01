@@ -3,7 +3,7 @@ using System.Data;
 public class Activity
 {
 
-    private static Random randomGenerator = new Random();
+    protected static Random randomGenerator = new Random();
     private int _timer;
     private string _activityName = "";
 
