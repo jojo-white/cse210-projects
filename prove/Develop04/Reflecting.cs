@@ -3,7 +3,7 @@ using System;
 
 public class Reflecting : Activity
 {
-    private static Random randomGenerator = new Random();
+    // private static Random randomGenerator = new Random();
 
     private List<string> _promptList = new List<string>{ "Think of your biggest achievement last week.", "Think of a time you spent on a hobby.", "Think of a time when you did something really difficult.", "Think about your actions today.", "Think of your favorite meal from last week."};
 
