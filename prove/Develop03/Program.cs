@@ -26,7 +26,7 @@ class Program
             }
             else
             {
-                s.HideWord();
+                s.HideWord(3);
             }
             
 

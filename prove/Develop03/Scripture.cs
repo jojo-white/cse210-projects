@@ -31,15 +31,21 @@ public class Scripture
     }
 
     
-    public int HideWord()
+    public int HideWord(int wordsToHide)
     {
-        if (_wordList.Count == 0) return 0;
+        
+        while(wordsToHide >= 1)
+        {
+            if (_wordList.Count == 0) return 0;
 
-        int wordIndex = random.Next(_wordList.Count);
-        _wordList[wordIndex].Hide();
+            int wordIndex = random.Next(_wordList.Count);
+            _wordList[wordIndex].Hide();
 
-        // RemoveAt is used to remove an element from a list (or an array) at a 0 based index
-        _wordList.RemoveAt(wordIndex);
+            // RemoveAt is used to remove an element from a list (or an array) at a 0 based index
+            _wordList.RemoveAt(wordIndex);
+            wordsToHide--;
+        }
+        
         return _wordList.Count;
     }
 
