@@ -63,8 +63,13 @@ public abstract class Goal
         else return "[ ]";
     }
 
+    public string AsString()
+    {
+        string goalFile = CreateDelimitedString("~~");
+        return goalFile;
+    }
+
     public abstract string GetGoalType();
-    public abstract string AsString();
     public abstract string GetDisplayString();   
     public abstract int RecordEvent();
     public virtual string CreateDelimitedString(string delimiter)

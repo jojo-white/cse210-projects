@@ -11,11 +11,6 @@ public class EternalGoal : Goal
     public EternalGoal(string goalName, string description, int pointValue, bool goalFinished) : base(goalName, description, pointValue, goalFinished)
     {}
 
-    public override string AsString()
-    {
-        string goalFile = CreateDelimitedString("~~");
-        return goalFile;
-    }
     public override string GetGoalType()
     {
         return GoalType;

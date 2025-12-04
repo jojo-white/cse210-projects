@@ -43,11 +43,6 @@ public class ChecklistGoal : Goal
         _timesCompleted = timesCompleted;
     }
     
-    public override string AsString()
-    {
-        string goalFile = CreateDelimitedString("~~");
-        return goalFile;
-    }
     public override string GetGoalType()
     {
         return GoalType;
