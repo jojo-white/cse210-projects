@@ -1,0 +1,4 @@
+90
+SimpleGoal~~[X]~~Test1~~This is test 1~~50
+EternalGoal~~[ ]~~Test2~~This test is eternal~~40
+ChecklistGoal~~[ ]~~Check test 3~~This is a checklist goal~~50~~500~~0~~3
