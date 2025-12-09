@@ -1,0 +1,4 @@
+Moon~~sphere~~384400~~3488.703607261535~~kilometers~~0.52~~degrees~~°
+Moon~~irregular~~334502~~11968.230293352226~~4378.620940879554~~kilometers~~123~~45~~arcminutes~~'
+Planet~~sphere~~4321.424~~46091.8359375~~kilometers~~2.2~~arcseconds~~""
+Nebula~~irregular~~1344~~314399134592715~~221928807113910.62~~light years~~85~~60~~arcminutes~~'
