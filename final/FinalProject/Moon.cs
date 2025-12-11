@@ -1,7 +1,7 @@
 public class Moon : CelestialObj
 {
-    public const string ObjectType = "Moon";
-    public const string DistanceMeasurement = "kilometers";
+    public const string _objectType = "Moon";
+    public const string _distanceMeasurement = "kilometers";
 
     public Moon(string text) : base(text)
     {}
@@ -36,12 +36,12 @@ public class Moon : CelestialObj
 
     public override string GetDistanceMeasurement()
     {
-        return DistanceMeasurement;
+        return _distanceMeasurement;
     }
 
     public override string GetCelestialObjType()
     {
-        return ObjectType;
+        return _objectType;
     }
 
 }

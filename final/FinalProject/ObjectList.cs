@@ -45,7 +45,7 @@ public class ObjectList : List<CelestialObj>
         string[] parts = text.Split("~~");
         switch(parts[0])
         {
-            case Moon.ObjectType:
+            case Moon._objectType:
                 return new Moon(text);
             case Planet.ObjectType:
                 return new Planet(text);
@@ -82,7 +82,9 @@ public class ObjectList : List<CelestialObj>
         foreach (CelestialObj c in this)
         {
             if (c is Blackhole)
-            {}
+            {
+                objectCount++;
+            }
             else
             {
                 string celestalObject = c.GetDisplayString();

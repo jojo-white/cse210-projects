@@ -198,7 +198,8 @@ class Program
                                 Nebula nObj = new Nebula(objectType, distance, isSphere, angularLength, measureName, measureNotation);
 
                                 double nebulaSize = nObj.CalcSphere(lightToKilometers, angularLength, measureName);
-                                string nebulaDecimal = distance.ToString("F3");
+                                double nebulaLight = nebulaSize / 9.461e+12;
+                                string nebulaDecimal = nebulaLight.ToString("F3");
 
                                 nObj.SetLongSize(nebulaSize);
                                 objList.Add(nObj);
@@ -251,7 +252,7 @@ class Program
                             objectType = objChoice.GetCelestialObjType();
                             double radius = objChoice.GetLongSize() / 2;
                             
-                            Console.WriteLine("An object will become a black hole when it has been \ncompressed past it's schwarzschild radius.");
+                            Console.WriteLine("An object will become a black hole when it has been \ncompressed past its schwarzschild radius.");
                             Console.WriteLine("For context: The sun in our solar system has a mass of 1.989 x 10^30 kg. That's 30 zeros. \nThe sun has a radius of 695,700 kilometers, \n and a schwarzschild radius of 3 kilometers.");
                             Console.Write($"What is the mass of your {objectType} in kg? (really hammer on the zeros!) ");
                             double mass = double.Parse(Console.ReadLine());
