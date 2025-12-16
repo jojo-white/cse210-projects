@@ -1,7 +1,7 @@
 public class Nebula : CelestialObj
 {
-    public const string ObjectType = "Nebula";
-    public const string DistanceMeasurement = "light years";
+    public const string _objectType = "Nebula";
+    public const string _distanceMeasurement = "light years";
 
     public Nebula(string text) : base(text)
     {}
@@ -37,11 +37,11 @@ public class Nebula : CelestialObj
 
     public override string GetDistanceMeasurement()
     {
-        return DistanceMeasurement;
+        return _distanceMeasurement;
     }
 
     public override string GetCelestialObjType()
     {
-        return ObjectType;
+        return _objectType;
     }
 }

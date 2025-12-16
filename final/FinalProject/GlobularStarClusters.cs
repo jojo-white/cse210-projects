@@ -1,7 +1,7 @@
 public class GlobularStarClusters : CelestialObj
 {
-    public const string ObjectType = "Globular Star Cluster";
-    public const string DistanceMeasurement = "light years";
+    public const string _objectType = "Globular Star Cluster";
+    public const string _distanceMeasurement = "light years";
 
     public GlobularStarClusters(string text) : base(text)
     {}
@@ -9,16 +9,35 @@ public class GlobularStarClusters : CelestialObj
     public GlobularStarClusters(string objectName, float distance, bool isSphere, float angularSize1, string measureName, string measureNotation) : base(objectName, distance, isSphere, angularSize1, measureName, measureNotation)
     {}
 
-
+    public override void CalcBlackHole(double radius, double mass)
+    {
+        double radiusMeters = radius * 9.461e+15;
+        double gravity = GetGravity();
+        double lightSpeed = GetLight();
+        string objectType = GetCelestialObjType();
+        double schwarzRadius = 2 * gravity * mass / (lightSpeed * lightSpeed);
+        if (schwarzRadius >= radiusMeters)
+        {
+            Console.WriteLine($"Your {objectType} is a black hole!");
+            Console.WriteLine($"Your {objectType}'s radius is {radiusMeters} meters.");
+            Console.WriteLine($"The schwarzchild radius is {schwarzRadius} meters.");
+        }
+        else if (schwarzRadius < radiusMeters)
+        {
+            Console.WriteLine($"Your {objectType} isn't a black hole :(");
+            Console.WriteLine($"Your {objectType}'s radius is {radiusMeters} meters.");
+            Console.WriteLine($"The schwarzchild radius is {schwarzRadius} meters.");
+        }
+    }
 
 
     public override string GetDistanceMeasurement()
     {
-        return DistanceMeasurement;
+        return _distanceMeasurement;
     }
 
     public override string GetCelestialObjType()
     {
-        return ObjectType;
+        return _objectType;
     }
 }

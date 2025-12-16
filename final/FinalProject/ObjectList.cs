@@ -1,5 +1,4 @@
 using System.Runtime.CompilerServices;
-using System.Text.Json;
 
 public class ObjectList : List<CelestialObj>
 {
@@ -47,19 +46,19 @@ public class ObjectList : List<CelestialObj>
         {
             case Moon._objectType:
                 return new Moon(text);
-            case Planet.ObjectType:
+            case Planet._objectType:
                 return new Planet(text);
-            case Nebula.ObjectType:
+            case Nebula._objectType:
                 return new Nebula(text);
-            case OpenStarClusters.ObjectType:
+            case OpenStarClusters._objectType:
                 return new OpenStarClusters(text);
-            case GlobularStarClusters.ObjectType:
+            case GlobularStarClusters._objectType:
                 return new GlobularStarClusters(text);
-            case Star.ObjectType:
+            case Star._objectType:
                 return new Star(text);
-            case Blackhole.ObjectType:
+            case Blackhole._objectType:
                 return new Blackhole(text);
-            case Galaxy.ObjectType:
+            case Galaxy._objectType:
                 return new Galaxy(text);
             default:
                 throw new NotImplementedException(parts[0]);
@@ -68,11 +67,12 @@ public class ObjectList : List<CelestialObj>
 
     public void DisplayObjects()
     {
+        int objectCount = 1;
         foreach (CelestialObj c in this)
         {
             string celestialObject = c.GetDisplayString();
-            Console.WriteLine($"{celestialObject}");
-            
+            Console.WriteLine($"{objectCount}. {celestialObject}");
+            objectCount++;
         }
     }
 

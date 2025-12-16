@@ -1,7 +1,7 @@
 public class Star : CelestialObj
 {
-    public const string ObjectType = "Star";
-    public const string DistanceMeasurement = "kilometers";
+    public const string _objectType = "Star";
+    public const string _distanceMeasurement = "kilometers";
 
     public Star(string text) : base(text)
     {}
@@ -10,16 +10,35 @@ public class Star : CelestialObj
     {}
 
 
-
+    public override void CalcBlackHole(double radius, double mass)
+    {
+        double radiusMeters = radius * 1000;
+        double gravity = GetGravity();
+        double lightSpeed = GetLight();
+        string objectType = GetCelestialObjType();
+        double schwarzRadius = 2 * gravity * mass / (lightSpeed * lightSpeed);
+        if (schwarzRadius >= radiusMeters)
+        {
+            Console.WriteLine($"Your {objectType} is a black hole!");
+            Console.WriteLine($"Your {objectType}'s radius is {radiusMeters} meters.");
+            Console.WriteLine($"The schwarzchild radius is {schwarzRadius} meters.");
+        }
+        else if (schwarzRadius < radiusMeters)
+        {
+            Console.WriteLine($"Your {objectType} isn't a black hole :(");
+            Console.WriteLine($"Your {objectType}'s radius is {radiusMeters} meters.");
+            Console.WriteLine($"The schwarzchild radius is {schwarzRadius} meters.");
+        }
+    }
 
 
     public override string GetDistanceMeasurement()
     {
-        return DistanceMeasurement;
+        return _distanceMeasurement;
     }
 
     public override string GetCelestialObjType()
     {
-        return ObjectType;
+        return _objectType;
     }
 }

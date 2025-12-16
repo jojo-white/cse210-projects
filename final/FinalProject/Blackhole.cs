@@ -1,8 +1,8 @@
 public class Blackhole : CelestialObj
 {
 
-    public const string ObjectType = "Black hole";
-    public const string DistanceMeasurement = "light years";
+    public const string _objectType = "Black hole";
+    public const string _distanceMeasurement = "kilometers";
 
     public Blackhole(string text) : base(text)
     {}
@@ -12,11 +12,11 @@ public class Blackhole : CelestialObj
 
     public override string GetDistanceMeasurement()
     {
-        return DistanceMeasurement;
+        return _distanceMeasurement;
     }
 
     public override string GetCelestialObjType()
     {
-        return ObjectType;
+        return _objectType;
     }
 }

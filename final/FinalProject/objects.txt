@@ -1,4 +1,9 @@
 Moon~~sphere~~384400~~3488.703607261535~~kilometers~~0.52~~degrees~~°
 Moon~~irregular~~334502~~11968.230293352226~~4378.620940879554~~kilometers~~123~~45~~arcminutes~~'
 Planet~~sphere~~4321.424~~46091.8359375~~kilometers~~2.2~~arcseconds~~""
-Nebula~~irregular~~1344~~314399134592715~~221928807113910.62~~light years~~85~~60~~arcminutes~~'
+Nebula~~irregular~~1344~~33.23106802586566~~23.457225146803786~~light years~~85~~60~~arcminutes~~'
+Open Star Cluster~~irregular~~444.2~~14.187537865965464~~10.07857820585515~~light years~~1.83~~1.3~~degrees~~°
+Globular Star Cluster~~sphere~~15.8~~165.45722166111224~~light years~~36~~arcminutes~~'
+Star~~sphere~~4.37~~204452.81036267878~~kilometers~~0.00102~~arcseconds~~""
+Black hole~~sphere~~2600~~6082120.462787485~~kilometers~~5.1E-05~~arcseconds~~""
+Galaxy~~irregular~~140~~7721.3368205468505~~2565.633883918367~~thousand light years~~3.16~~1.05~~degrees~~°

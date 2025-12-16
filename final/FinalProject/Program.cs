@@ -47,6 +47,11 @@ class Program
                     string objectType = GetObjectType(objectAnswer);
                     string distanceType = GetDistanceType(objectAnswer);
                     Console.Clear();
+                    if (objectAnswer == 9)
+                    {
+                        break;
+                    }
+                    else{}
 
                     Console.Write($"How far, in {distanceType} (you can use decimals), is your {objectType}? ");
                     float distance = float.Parse(Console.ReadLine());
@@ -97,6 +102,8 @@ class Program
                             float angularLength;
                             float longAngularLength;
                             float shortAngularLength;
+                            float millionKilometers;
+                            double lightToKilometers;
                             Console.WriteLine();
                             Console.WriteLine("That is not an option. Please Try again.");
                             Thread.Sleep(1500);
@@ -148,7 +155,7 @@ class Program
                             
                             break;
                         case 2:
-                            float millionKilometers = distance * 1000000;
+                            millionKilometers = distance * 1000000;
                             Console.Write($"What is the angular length, or diameter (you can use decimals), of your {objectType} in {measureName}? ");
                             angularLength = float.Parse(Console.ReadLine());
 
@@ -164,7 +171,7 @@ class Program
                             Thread.Sleep(2000);
                             break;
                         case 3:
-                            double lightToKilometers = distance * 9.461e+12;
+                            lightToKilometers = distance * 9.461e+12;
                             if (!isSphere)
                             {
                                 Console.Write($"What is the angular length (you can use decimals) of your {objectType} at it's longest in {measureName}? ");
@@ -182,8 +189,8 @@ class Program
                                 double nebulaShortLight = nebulaShortLength / 9.461e+12;
                                 string nebulaShortDecimal = nebulaShortLight.ToString("F3");
 
-                                nObj.SetLongSize(nebulaLongLength);
-                                nObj.SetShortSize(nebulaShortLength);
+                                nObj.SetLongSize(nebulaLongLight);
+                                nObj.SetShortSize(nebulaShortLight);
                                 objList.Add(nObj);
 
                                 Console.WriteLine();
@@ -201,7 +208,7 @@ class Program
                                 double nebulaLight = nebulaSize / 9.461e+12;
                                 string nebulaDecimal = nebulaLight.ToString("F3");
 
-                                nObj.SetLongSize(nebulaSize);
+                                nObj.SetLongSize(nebulaLight);
                                 objList.Add(nObj);
 
                                 Console.WriteLine($"Your nebula has a {nebulaDecimal} light year long diameter!");
@@ -210,41 +217,150 @@ class Program
                             Console.Clear();
                             break;
                         case 4:
+                            lightToKilometers = distance * 9.461e+12;
+                            Console.Write($"What is the angular length (you can use decimals) of your {objectType} at it's longest in {measureName}? ");
+                            longAngularLength = float.Parse(Console.ReadLine());
+
+                            Console.Write($"What is the angular length (you can use decimals) of your {objectType} at it's shortest in {measureName}? ");
+                            shortAngularLength = float.Parse(Console.ReadLine());
+
+                            OpenStarClusters oObj = new OpenStarClusters(objectType, distance, isSphere, longAngularLength, shortAngularLength, measureName, measureNotation);
+
+                            double openLongLength = oObj.CalcLongDimension(lightToKilometers, longAngularLength, measureName);
+                            double openLongLight = openLongLength / 9.461e+12;
+                            string openLongDecimal = openLongLight.ToString("F3");
+                            double openShortLength = oObj.CalcShortDimension(lightToKilometers, shortAngularLength, measureName);
+                            double openShortLight = openShortLength / 9.461e+12;
+                            string openShortDecimal = openShortLight.ToString("F3");
+
+                            oObj.SetLongSize(openLongLight);
+                            oObj.SetShortSize(openShortLight);
+                            objList.Add(oObj);
+                            Console.WriteLine();
+
+                            Console.WriteLine($"Your open star cluster is approximately {openLongDecimal} light years by {openShortDecimal} light years across!");
+                            Thread.Sleep(2000);
+
                             Console.Clear();
                             break;
                         case 5:
+                            double thousandLightsToKilometers = distance * 9.461e+15;
+                            Console.Write($"What is the angular length, or diameter (you can use decimals), of your {objectType} in {measureName}? ");
+                            angularLength = float.Parse(Console.ReadLine());
+
+                            GlobularStarClusters gObj = new GlobularStarClusters(objectType, distance, isSphere, angularLength, measureName, measureNotation);
+
+                            double globularSize = gObj.CalcSphere(thousandLightsToKilometers, angularLength, measureName);
+                            double globularLight = globularSize / 9.461e+12;
+                            string globularDecimal = globularLight.ToString("F3");
+
+                            gObj.SetLongSize(globularLight);
+                            objList.Add(gObj);
+
+                            Console.WriteLine($"Your globular cluster has a {globularDecimal} light year long diameter!");
+                            Thread.Sleep(2000);
                             Console.Clear();
                             break;
                         case 6:
+                            lightToKilometers = distance * 9.461e+12;
+                            Console.Write($"What is the angular length, or diameter (you can use decimals), of your {objectType} in {measureName}? ");
+                            angularLength = float.Parse(Console.ReadLine());
+
+                            Star sObj = new Star(objectType, distance, isSphere, angularLength, measureName, measureNotation);
+
+                            double starSize = sObj.CalcSphere(lightToKilometers, angularLength, measureName);
+                            string starDecimal = starSize.ToString("F3");
+
+                            sObj.SetLongSize(starSize);
+                            objList.Add(sObj);
+
+                            Console.WriteLine($"Your star has a {starDecimal} kilometer long diameter!");
+                            Thread.Sleep(2000);
                             Console.Clear();
                             break;
                         case 7:
+                            lightToKilometers = distance * 9.461e+12;
+                            Console.Write($"What is the angular length, or diameter (you can use decimals), of your {objectType} in {measureName}? ");
+                            angularLength = float.Parse(Console.ReadLine());
+
+                            Blackhole bObj = new Blackhole(objectType, distance, isSphere, angularLength, measureName, measureNotation);
+
+                            double holeSize = bObj.CalcSphere(lightToKilometers, angularLength, measureName);
+                            string holeDecimal = holeSize.ToString("F3");
+
+                            bObj.SetLongSize(holeSize);
+                            objList.Add(bObj);
+
+                            Console.WriteLine($"Your black hole's event horizon has a {holeDecimal} kilometer long diameter!");
+                            Thread.Sleep(2000);
                             Console.Clear();
                             break;
                         case 8:
+                            double millionLightsToKilometers = distance * 9.46073e+18;
+                            if (!isSphere)
+                            {
+                                Console.Write($"What is the angular length (you can use decimals) of your {objectType} at it's longest in {measureName}? ");
+                                longAngularLength = float.Parse(Console.ReadLine());
+
+                                Console.Write($"What is the angular length (you can use decimals) of your {objectType} at it's shortest in {measureName}? ");
+                                shortAngularLength = float.Parse(Console.ReadLine());
+
+                                Galaxy galaxyObj = new Galaxy(objectType, distance, isSphere, longAngularLength, shortAngularLength, measureName, measureNotation);
+
+                                double galaxyLongLength = galaxyObj.CalcLongDimension(millionLightsToKilometers, longAngularLength, measureName);
+                                double galaxyLongLight = galaxyLongLength / 9.46073e+15;
+                                string galaxyLongDecimal = galaxyLongLight.ToString("F3");
+
+                                double galaxyShortLength = galaxyObj.CalcShortDimension(millionLightsToKilometers, shortAngularLength, measureName);
+                                double galaxyShortLight = galaxyShortLength / 9.46073e+15;
+                                string galaxyShortDecimal = galaxyShortLight.ToString("F3");
+
+                                galaxyObj.SetLongSize(galaxyLongLight);
+                                galaxyObj.SetShortSize(galaxyShortLight);
+                                objList.Add(galaxyObj);
+                                Console.WriteLine();
+                                Console.WriteLine($"Your galaxy is approximately {galaxyLongDecimal} thousand light years by {galaxyShortDecimal} thousand light years across!");
+                                Thread.Sleep(2000);
+                            }
+                            else if (isSphere)
+                            {
+                                Console.Write($"What is the angular length, or diameter (you can use decimals), of your {objectType} in {measureName}? ");
+                                angularLength = float.Parse(Console.ReadLine());
+
+                                Galaxy galaxyObj = new Galaxy(objectType, distance, isSphere, angularLength, measureName, measureNotation);
+
+                                double galaxySize = galaxyObj.CalcSphere(millionLightsToKilometers, angularLength, measureName);
+                                double galaxyLight = galaxySize / 9.46073e+15;
+                                string galaxyDecimal = galaxyLight.ToString("F3");
+
+                                galaxyObj.SetLongSize(galaxyLight);
+                                objList.Add(galaxyObj);
+
+                                Console.WriteLine($"Your galaxy has a {galaxyDecimal} thousand light year long diameter!");
+                                Thread.Sleep(2000);
+                            }
                             Console.Clear();
                             break;
-                        case 9:
-                            Console.Clear();
-                            break;
+
 
                         
                     }                    
 
                     break;
                 case 2:
-                    Console.Clear();
-                    Console.WriteLine();
-                    Console.WriteLine("Your current Celestial Objects are:");
-                    objList.DisplayNoBlackHoles();
-                    Console.Write("Which object did you want to see turn into a black hole? ");
-                    string holeChoice = Console.ReadLine();
-                    int blackHole = int.Parse(holeChoice) - 1;
-                    Console.Clear();
+                    
                     
                     bool exitBlackHole = false;
                     while (!exitBlackHole)
                     {
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("Your current Celestial Objects are:");
+                        objList.DisplayNoBlackHoles();
+                        Console.Write("Which object did you want to see turn into a black hole? ");
+                        string holeChoice = Console.ReadLine();
+                        int blackHole = int.Parse(holeChoice) - 1;
+                        Console.Clear();
                         if (blackHole >= 0 && blackHole < objList.Count)
                         {
                             exitBlackHole = true;
@@ -252,12 +368,19 @@ class Program
                             objectType = objChoice.GetCelestialObjType();
                             double radius = objChoice.GetLongSize() / 2;
                             
-                            Console.WriteLine("An object will become a black hole when it has been \ncompressed past its schwarzschild radius.");
+                            Console.WriteLine("An object will become a black hole when it has been \ncompressed past it's schwarzschild radius.");
                             Console.WriteLine("For context: The sun in our solar system has a mass of 1.989 x 10^30 kg. That's 30 zeros. \nThe sun has a radius of 695,700 kilometers, \n and a schwarzschild radius of 3 kilometers.");
                             Console.Write($"What is the mass of your {objectType} in kg? (really hammer on the zeros!) ");
                             double mass = double.Parse(Console.ReadLine());
                             objChoice.CalcBlackHole(radius, mass);
 
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("That is not an option. Please Try again.");
+                            Thread.Sleep(1500);
+                            Console.Clear();
                         }
                     }
 
@@ -388,21 +511,26 @@ class Program
         // Planets (2), Globular Star Clusters (5), Stars (6), and Black Hole event horizons (7) are always spheres, while Open Star Clusters (4) are always NOT spheres, so this will determine if we need to ask if their object is spherical or not
         if (userChoice == 2 || userChoice == 5 || userChoice == 6 || userChoice == 7)
         {
+            Console.WriteLine();
             Console.WriteLine($"Your {objectName} is always going to be a sphere.");
+            Console.WriteLine();
             isSphere = true;
         }
         else if (userChoice == 4)
         {
+            Console.WriteLine();
             Console.WriteLine($"Your {objectName} is always going to NOT be a sphere.");
+            Console.WriteLine();
             isSphere = false;
         }
         else
         {
             
             bool exitSphereAnswer = false;
-
+            Console.WriteLine();
             while (!exitSphereAnswer)
             {
+                
                 Console.WriteLine("Does your object appear spherical or irregular in the sky?");
                 Console.WriteLine("Choose spherical if your object appears like a circle. (s)\nChoose irregular if your object doesn't appear like a circle. (i)");
                 string sphereAnswer = Console.ReadLine();
@@ -424,7 +552,9 @@ class Program
                     Console.Clear();
                     exitSphereAnswer = false;
                 }
+                
             }
+            Console.WriteLine();
         }
 
         

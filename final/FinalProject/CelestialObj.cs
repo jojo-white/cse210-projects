@@ -9,8 +9,8 @@ public abstract class CelestialObj
     private double _longSize;
     private double _shortSize;
     private bool _isSphere;
-    private const double Gravity = 0.000000000066743; // in m^3 per kg^-1 per s^-2
-    private const double LightSpeed = 299792458; // in m/s
+    private const double _gravity = 0.000000000066743; // in m^3 per kg^-1 per s^-2
+    private const double _lightSpeed = 299792458; // in m/s
 
     public CelestialObj(string text)
     {
@@ -128,24 +128,27 @@ public abstract class CelestialObj
     public abstract string GetDistanceMeasurement();
     public abstract string GetCelestialObjType();
 
-    public double CalcSphere(double distance, float angularLength, string measureName)
+    public double CalcSphere(double distance, double angularLength, string measureName)
     {
         double pi = Math.PI;
         
         if (measureName == "degrees")
         {
-            double diameter = angularLength * (2 * pi) * distance / 360;
+            double radians = angularLength * (pi / 180);
+            double diameter = radians * distance;
             return diameter;
         }
         else if (measureName == "arcminutes")
         {
-            float minute = angularLength / 60;
-            double diameter = minute * (2 * pi) * distance / 360;
+            double minute = angularLength / 60;
+            double radians = minute * (pi / 180);
+            double diameter = radians * distance;
             return diameter;
         }
         else if (measureName == "arcseconds")
         {
-            double diameter = angularLength * distance / 206265;
+            double radians = angularLength / 206265;
+            double diameter = radians * distance;
             return diameter;
         }
         else
@@ -217,11 +220,11 @@ public abstract class CelestialObj
 
     public double GetLight()
     {
-        return LightSpeed;
+        return _lightSpeed;
     }
     public double GetGravity()
     {
-        return Gravity;
+        return _gravity;
     }
     public string GetObjectName()
     {

@@ -1,7 +1,7 @@
 public class Planet : CelestialObj
 {
-    public const string ObjectType = "Planet";
-    public const string DistanceMeasurement = "kilometers";
+    public const string _objectType = "Planet";
+    public const string _distanceMeasurement = "kilometers";
 
     public Planet(string text) : base(text)
     {}
@@ -32,12 +32,12 @@ public class Planet : CelestialObj
 
     public override string GetDistanceMeasurement()
     {
-        return DistanceMeasurement;
+        return _distanceMeasurement;
     }
 
     public override string GetCelestialObjType()
     {
-        return ObjectType;
+        return _objectType;
     }
 
 }
